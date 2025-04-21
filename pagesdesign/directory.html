@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务目录 - RemoteMCP.org</title>
+    <meta name="description" content="浏览、筛选和搜索远程MCP服务，找到最适合您需求的AI助手服务">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .filters {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .filter-option {
+            cursor: pointer;
+            padding: 5px 12px;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-option:hover {
+            background-color: var(--medium-gray);
+        }
+        
+        .filter-option.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .view-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-button {
+            padding: 8px 15px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .view-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .sort-select {
+            padding: 8px 15px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+        }
+        
+        .service-tag {
+            font-size: 12px;
+            padding: 3px 8px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+            border-radius: 4px;
+        }
+        
+        .tag-category {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        
+        .tag-complexity {
+            background-color: #f1f8e9;
+            color: #558b2f;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 5px;
+        }
+        
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            background-color: white;
+            border: 1px solid var(--medium-gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .page-item:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .page-item.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">RemoteMCP.org</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="directory.html">浏览服务</a></li>
+                    <li><a href="guide.html">用户指南</a></li>
+                    <li><a href="developers.html">开发者中心</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面内容 -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">MCP服务目录</h1>
+            
+            <!-- 筛选器 -->
+            <div class="filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <input type="text" class="search-box" placeholder="搜索服务..." id="searchInput">
+                    </div>
+                </div>
+                
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <h3>分类</h3>
+                        <div class="filter-options">
+                            <div class="filter-option active" data-filter="category" data-value="all">全部</div>
+                            <div class="filter-option" data-filter="category" data-value="text">文本处理</div>
+                            <div class="filter-option" data-filter="category" data-value="image">图像分析</div>
+                            <div class="filter-option" data-filter="category" data-value="code">代码辅助</div>
+                            <div class="filter-option" data-filter="category" data-value="data">数据处理</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>复杂度</h3>
+                        <div class="filter-options">
+                            <div class="filter-option active" data-filter="complexity" data-value="all">全部</div>
+                            <div class="filter-option" data-filter="complexity" data-value="low">简单配置</div>
+                            <div class="filter-option" data-filter="complexity" data-value="medium">中等配置</div>
+                            <div class="filter-option" data-filter="complexity" data-value="high">高级配置</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 视图选项 -->
+            <div class="view-options">
+                <div class="view-toggle">
+                    <div class="view-button active" data-view="grid">网格视图</div>
+                    <div class="view-button" data-view="list">列表视图</div>
+                </div>
+                
+                <div class="sort-group">
+                    <select class="sort-select" id="sortSelect">
+                        <option value="popular">按热度排序</option>
+                        <option value="new">最新添加</option>
+                        <option value="name">按名称排序</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 服务列表 -->
+            <div class="services-grid" id="servicesContainer">
+                <!-- 服务项目1 -->
+                <div class="card service-card" data-category="text" data-complexity="low">
+                    <div class="card-body">
+                        <h3 class="card-title">Claude分析服务</h3>
+                        <p>强大的文本分析和理解服务，支持长文档处理。自动识别文档结构、提取关键信息并生成摘要。</p>
+                        <div style="margin-top: 10px;">
+                            <span class="service-tag tag-category">文本</span>
+                            <span class="service-tag tag-complexity">简单配置</span>
+                        </div>
+                    </div>
+                    <a href="service/claude-analysis.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                
+                <!-- 服务项目2 -->
+                <div class="card service-card" data-category="code" data-complexity="medium">
+                    <div class="card-body">
+                        <h3 class="card-title">GPT代码助手</h3>
+                        <p>提供代码生成、优化和解释的智能服务。支持多种编程语言，能理解复杂的代码需求。</p>
+                        <div style="margin-top: 10px;">
+                            <span class="service-tag tag-category">代码</span>
+                            <span class="service-tag tag-complexity">中等配置</span>
+                        </div>
+                    </div>
+                    <a href="service/gpt-code.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                
+                <!-- 服务项目3 -->
+                <div class="card service-card" data-category="image" data-complexity="low">
+                    <div class="card-body">
+                        <h3 class="card-title">图像识别API</h3>
+                        <p>快速准确的图像识别和分类服务。可以识别图像中的物体、场景、文字和人脸等内容。</p>
+                        <div style="margin-top: 10px;">
+                            <span class="service-tag tag-category">图像</span>
+                            <span class="service-tag tag-complexity">简单配置</span>
+                        </div>
+                    </div>
+                    <a href="service/image-recognition.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                
+                <!-- 服务项目4 -->
+                <div class="card service-card" data-category="data" data-complexity="high">
+                    <div class="card-body">
+                        <h3 class="card-title">数据分析助手</h3>
+                        <p>智能数据分析和可视化服务，能从复杂数据中提取洞见并生成报告。</p>
+                        <div style="margin-top: 10px;">
+                            <span class="service-tag tag-category">数据</span>
+                            <span class="service-tag tag-complexity">高级配置</span>
+                        </div>
+                    </div>
+                    <a href="service/data-analysis.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                
+                <!-- 服务项目5 -->
+                <div class="card service-card" data-category="text" data-complexity="medium">
+                    <div class="card-body">
+                        <h3 class="card-title">多语言翻译服务</h3>
+                        <p>高质量的多语言翻译服务，支持100多种语言，保持原文风格和语义。</p>
+                        <div style="margin-top: 10px;">
+                            <span class="service-tag tag-category">文本</span>
+                            <span class="service-tag tag-complexity">中等配置</span>
+                        </div>
+                    </div>
+                    <a href="service/translation.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                
+                <!-- 服务项目6 -->
+                <div class="card service-card" data-category="image" data-complexity="medium">
+                    <div class="card-body">
+                        <h3 class="card-title">图像生成API</h3>
+                        <p>根据文字描述自动生成高质量图像，支持多种风格和场景定制。</p>
+                        <div style="margin-top: 10px;">
+                            <span class="service-tag tag-category">图像</span>
+                            <span class="service-tag tag-complexity">中等配置</span>
+                        </div>
+                    </div>
+                    <a href="service/image-generation.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+            </div>
+            
+            <!-- 分页 -->
+            <div class="pagination">
+                <div class="page-item active">1</div>
+                <div class="page-item">2</div>
+                <div class="page-item">3</div>
+                <div class="page-item">...</div>
+                <div class="page-item">10</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="directory.html">服务目录</a></li>
+                        <li><a href="guide.html">用户指南</a></li>
+                        <li><a href="developers.html">开发者中心</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="guide/faq.html">常见问题</a></li>
+                        <li><a href="guide/glossary.html">术语表</a></li>
+                        <li><a href="blog.html">博客</a></li>
+                        <li><a href="guide/tutorials.html">教程</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>社区</h3>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/remotemcp.org" target="_blank">GitHub</a></li>
+                        <li><a href="contribute.html">贡献指南</a></li>
+                        <li><a href="submit.html">提交服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="terms.html">使用条款</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 RemoteMCP.org. 基于MIT许可证开源。
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 筛选逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            // 筛选选项点击事件
+            const filterOptions = document.querySelectorAll('.filter-option');
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const filterType = this.getAttribute('data-filter');
+                    const filterValue = this.getAttribute('data-value');
+                    
+                    // 更新活动状态
+                    document.querySelectorAll(`.filter-option[data-filter="${filterType}"]`).forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // 应用筛选
+                    applyFilters();
+                });
+            });
+            
+            // 搜索框输入事件
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                applyFilters();
+            });
+            
+            // 排序选择事件
+            const sortSelect = document.getElementById('sortSelect');
+            sortSelect.addEventListener('change', function() {
+                applyFilters();
+            });
+            
+            // 视图切换事件
+            const viewButtons = document.querySelectorAll('.view-button');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const viewType = this.getAttribute('data-view');
+                    
+                    // 更新活动状态
+                    document.querySelectorAll('.view-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // 应用视图
+                    const servicesContainer = document.getElementById('servicesContainer');
+                    if (viewType === 'grid') {
+                        servicesContainer.className = 'services-grid';
+                    } else {
+                        servicesContainer.className = 'services-list';
+                    }
+                });
+            });
+            
+            // 筛选和搜索函数
+            function applyFilters() {
+                const searchText = searchInput.value.toLowerCase();
+                const categoryFilter = document.querySelector('.filter-option[data-filter="category"].active').getAttribute('data-value');
+                const complexityFilter = document.querySelector('.filter-option[data-filter="complexity"].active').getAttribute('data-value');
+                
+                const services = document.querySelectorAll('.service-card');
+                services.forEach(service => {
+                    const title = service.querySelector('.card-title').textContent.toLowerCase();
+                    const description = service.querySelector('p').textContent.toLowerCase();
+                    const category = service.getAttribute('data-category');
+                    const complexity = service.getAttribute('data-complexity');
+                    
+                    const matchesSearch = title.includes(searchText) || description.includes(searchText);
+                    const matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+                    const matchesComplexity = complexityFilter === 'all' || complexity === complexityFilter;
+                    
+                    if (matchesSearch && matchesCategory && matchesComplexity) {
+                        service.style.display = '';
+                    } else {
+                        service.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,60 @@
+:root {
+  /* 颜色变量 */
+  --primary-color: #3366ff;
+  --primary-light: #5c85ff;
+  --primary-dark: #0044cc;
+  
+  --secondary-color: #2c3e50;
+  --secondary-light: #8aa4be;
+  
+  --accent-color: #42b883;
+  
+  --text-color: #333333;
+  --text-light: #666666;
+  
+  --dark-gray: #2c3e50;
+  --medium-gray: #95a5a6;
+  --light-gray: #ecf0f1;
+  --lightest-gray: #f8f9fa;
+  
+  --success-color: #42b883;
+  --warning-color: #e67e22;
+  --error-color: #e74c3c;
+  --info-color: #3498db;
+  
+  /* 间距变量 */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* 边框变量 */
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+  
+  /* 阴影变量 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+  
+  /* 字体变量 */
+  --font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family-heading: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  
+  /* 容器宽度 */
+  --container-max-width: 1200px;
+  --container-padding: 1rem;
+}
+
+/* 暗色主题变量 - 未来实现 */
+.dark-theme {
+  --primary-color: #5c85ff;
+  --text-color: #f0f0f0;
+  --text-light: #cccccc;
+  --dark-gray: #1a1a1a;
+  --medium-gray: #666666;
+  --light-gray: #333333;
+  --lightest-gray: #222222;
+} 

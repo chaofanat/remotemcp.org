@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude分析服务 - RemoteMCP.org</title>
+    <meta name="description" content="Claude分析服务是一个强大的文本分析和理解服务，支持长文档处理和高级分析功能">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .service-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .service-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .service-meta {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .meta-item {
+            margin-bottom: 15px;
+        }
+        
+        .meta-item-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+        }
+        
+        .service-description {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--medium-gray);
+            margin-bottom: 30px;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .usage-step {
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background-color: #f5f7f9;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding-top: 10px;
+            display: none;
+        }
+        
+        .faq-answer.open {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">RemoteMCP.org</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="directory.html">浏览服务</a></li>
+                    <li><a href="guide.html">用户指南</a></li>
+                    <li><a href="developers.html">开发者中心</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 服务英雄区 -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>Claude分析服务</h1>
+            <p>强大的文本分析和理解服务，支持长文档处理</p>
+        </div>
+    </section>
+
+    <!-- 服务信息 -->
+    <section class="section">
+        <div class="container">
+            <div class="service-info">
+                <div class="service-meta">
+                    <div class="meta-item">
+                        <div class="meta-item-title">提供商</div>
+                        <div>Anthropic, Inc.</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-item-title">版本</div>
+                        <div>2.0</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-item-title">分类</div>
+                        <div>文本处理</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-item-title">复杂度</div>
+                        <div>简单配置</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-item-title">API文档</div>
+                        <div><a href="https://docs.anthropic.com/claude/reference/" target="_blank">查看文档</a></div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-item-title">标签</div>
+                        <div>
+                            <span class="tag">文本</span>
+                            <span class="tag">分析</span>
+                            <span class="tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-description">
+                    <h2>服务概述</h2>
+                    <p>Claude分析服务是一款由Anthropic开发的强大文本分析工具，基于最先进的大语言模型。它能够处理和分析长文档，提取关键信息，生成摘要，并回答相关问题。</p>
+                    <p>这项服务特别适合需要对大量文本数据进行分析、总结和洞察的用户，如研究人员、内容创作者、数据分析师等。</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn">开始使用</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 标签页 -->
+            <div class="tabs" id="serviceTabs">
+                <div class="tab active" data-tab="features">功能特点</div>
+                <div class="tab" data-tab="usage">使用指南</div>
+                <div class="tab" data-tab="faq">常见问题</div>
+                <div class="tab" data-tab="related">相关服务</div>
+            </div>
+            
+            <!-- 标签内容区 -->
+            <div class="tab-content active" id="features">
+                <h2>主要功能</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-title">文档分析</div>
+                        <p>自动识别文档结构、提取关键信息，支持多种格式的长文档。</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">智能摘要生成</div>
+                        <p>生成准确、简洁的文档摘要，保留核心要点。</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">问答功能</div>
+                        <p>基于文档内容回答问题，提供准确且相关的答案。</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">多语言支持</div>
+                        <p>支持超过100种语言的文本分析和处理。</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">实时处理</div>
+                        <p>快速处理文本，几乎实时返回分析结果。</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">高级上下文理解</div>
+                        <p>理解复杂上下文和含义，提供更准确的分析。</p>
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 40px;">适用场景</h2>
+                <p>Claude分析服务适用于以下场景：</p>
+                <ul>
+                    <li>研究论文和学术文献分析</li>
+                    <li>法律文档审核和摘要</li>
+                    <li>市场研究报告分析</li>
+                    <li>新闻和媒体内容总结</li>
+                    <li>客户反馈和评论分析</li>
+                    <li>技术文档和知识库创建</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="usage">
+                <h2>使用指南</h2>
+                
+                <div class="usage-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">获取API密钥</div>
+                    <p>访问<a href="https://console.anthropic.com/" target="_blank">Anthropic控制台</a>，创建账户并获取API密钥。</p>
+                </div>
+                
+                <div class="usage-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">安装客户端库</div>
+                    <p>根据您的编程语言，安装相应的客户端库：</p>
+                    
+                    <div class="code-block">
+                        # Python<br>
+                        pip install anthropic<br><br>
+                        
+                        # JavaScript<br>
+                        npm install @anthropic-ai/sdk
+                    </div>
+                </div>
+                
+                <div class="usage-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">初始化API客户端</div>
+                    <p>使用您的API密钥初始化客户端：</p>
+                    
+                    <div class="code-block">
+                        # Python<br>
+                        import anthropic<br>
+                        client = anthropic.Anthropic(api_key="YOUR_API_KEY")<br><br>
+                        
+                        // JavaScript<br>
+                        import { Anthropic } from '@anthropic-ai/sdk';<br>
+                        const client = new Anthropic({ apiKey: 'YOUR_API_KEY' });
+                    </div>
+                </div>
+                
+                <div class="usage-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">发送分析请求</div>
+                    <p>发送文本进行分析：</p>
+                    
+                    <div class="code-block">
+                        # Python<br>
+                        response = client.messages.create(<br>
+                        &nbsp;&nbsp;model="claude-3-opus-20240229",<br>
+                        &nbsp;&nbsp;max_tokens=1000,<br>
+                        &nbsp;&nbsp;messages=[<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "user",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "请分析以下文档并提取关键信息：\n\n" + your_document<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;]<br>
+                        )<br>
+                        print(response.content)
+                    </div>
+                </div>
+                
+                <div class="usage-step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">处理和展示结果</div>
+                    <p>处理API返回的结果并整合到您的应用中：</p>
+                    
+                    <div class="code-block">
+                        # 示例：提取并展示摘要<br>
+                        summary = response.content[0].text<br>
+                        print("文档摘要：")<br>
+                        print(summary)
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">其他集成方式</h3>
+                <p>除了直接使用API外，您还可以通过以下方式使用Claude分析服务：</p>
+                <ul>
+                    <li>通过Zapier集成到您的工作流程</li>
+                    <li>使用官方的Web界面</li>
+                    <li>通过我们的VS Code扩展</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="faq">
+                <h2>常见问题</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Claude分析服务是否支持中文文档？
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        是的，Claude分析服务完全支持中文文档的分析和处理，包括摘要生成、关键信息提取和问答功能。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        服务有文档长度限制吗？
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Claude-3 Opus模型支持最多200K tokens（约15万英文单词）的文档，这大约相当于600页的书籍。对于大多数用例来说，这个限制已经足够大了。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        API请求的费用如何计算？
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        费用基于输入和输出的token数量计算。具体价格取决于您选择的模型版本，请参考<a href="#">官方定价页面</a>获取最新价格信息。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        我的文档数据是否安全？
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Anthropic采取严格的数据安全措施。默认情况下，您的查询不会用于模型训练，且数据传输和存储采用加密方式。您也可以选择企业级服务获得更高级别的数据保护。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        如何确保分析结果的准确性？
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Claude模型经过训练以提供高度准确的分析，但仍建议对重要决策进行人工验证。为了提高准确性，请提供清晰的指令和足够的上下文。如果发现不准确的结果，您可以通过反馈系统报告。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="related">
+                <h2>相关服务</h2>
+                
+                <div class="services-grid">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <h3 class="card-title">GPT内容生成</h3>
+                            <p>基于OpenAI技术的内容生成服务，适用于创意写作和文案撰写。</p>
+                            <div class="tags">
+                                <span class="tag">文本</span>
+                                <span class="tag">生成</span>
+                            </div>
+                        </div>
+                        <a href="service/gpt-content.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                    </div>
+                    
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <h3 class="card-title">多语言翻译服务</h3>
+                            <p>高质量的多语言翻译服务，支持100多种语言，保持原文风格和语义。</p>
+                            <div class="tags">
+                                <span class="tag">文本</span>
+                                <span class="tag">翻译</span>
+                            </div>
+                        </div>
+                        <a href="service/translation.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                    </div>
+                    
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <h3 class="card-title">情感分析API</h3>
+                            <p>分析文本中的情感倾向和主观态度，适用于舆情监测和客户反馈分析。</p>
+                            <div class="tags">
+                                <span class="tag">文本</span>
+                                <span class="tag">分析</span>
+                            </div>
+                        </div>
+                        <a href="service/sentiment-analysis.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="directory.html">服务目录</a></li>
+                        <li><a href="guide.html">用户指南</a></li>
+                        <li><a href="developers.html">开发者中心</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="guide/faq.html">常见问题</a></li>
+                        <li><a href="guide/glossary.html">术语表</a></li>
+                        <li><a href="blog.html">博客</a></li>
+                        <li><a href="guide/tutorials.html">教程</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>社区</h3>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/remotemcp.org" target="_blank">GitHub</a></li>
+                        <li><a href="contribute.html">贡献指南</a></li>
+                        <li><a href="submit.html">提交服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="terms.html">使用条款</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 RemoteMCP.org. 基于MIT许可证开源。
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 标签页切换
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有活动状态
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // 添加活动状态到当前选项卡
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // FAQ切换
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const toggle = this.querySelector('.toggle');
+                    
+                    if (answer.classList.contains('open')) {
+                        answer.classList.remove('open');
+                        toggle.textContent = '+';
+                    } else {
+                        answer.classList.add('open');
+                        toggle.textContent = '-';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

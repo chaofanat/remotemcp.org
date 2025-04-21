@@ -1,0 +1,24 @@
+{
+  "name": "remotemcp.org",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^15.0.8",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "buffer": "^6.0.3",
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户指南 - RemoteMCP.org</title>
+    <meta name="description" content="学习如何使用MCP服务，了解基础知识和最佳实践">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .guide-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guide-image {
+            height: 160px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-size: 18px;
+        }
+        
+        .guide-content {
+            padding: 20px;
+        }
+        
+        .guide-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .toc {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toc-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .toc-list li {
+            margin-bottom: 10px;
+        }
+        
+        .toc-list a {
+            display: block;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .toc-list a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">RemoteMCP.org</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="directory.html">浏览服务</a></li>
+                    <li><a href="guide.html">用户指南</a></li>
+                    <li><a href="developers.html">开发者中心</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面内容 -->
+    <section class="hero">
+        <div class="container">
+            <h1>用户指南</h1>
+            <p>学习如何使用MCP服务，了解基础知识和最佳实践</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="toc">
+                <h2 class="toc-title">内容导航</h2>
+                <ul class="toc-list">
+                    <li><a href="#mcp-basics">MCP基础知识</a></li>
+                    <li><a href="#getting-started">新手入门</a></li>
+                    <li><a href="#use-cases">常见使用场景</a></li>
+                    <li><a href="#advanced-topics">高级主题</a></li>
+                    <li><a href="#faq">常见问题解答</a></li>
+                </ul>
+            </div>
+            
+            <div id="mcp-basics">
+                <h2 class="section-title">MCP基础知识</h2>
+                <p>MCP（Model Context Protocol）是一种现代协议，用于与AI模型进行交互。以下指南将帮助您了解MCP的基础知识：</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">什么是MCP?</h3>
+                            <p>了解Model Context Protocol的基础概念和工作原理。</p>
+                            <a href="guide/what-is-mcp.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">MCP vs 传统API</h3>
+                            <p>了解MCP与传统API的区别，以及它带来的优势。</p>
+                            <a href="guide/mcp-vs-api.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">MCP的核心概念</h3>
+                            <p>深入了解MCP的关键组件和概念，包括上下文、工具和推理。</p>
+                            <a href="guide/mcp-concepts.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="getting-started" style="margin-top: 60px;">
+                <h2 class="section-title">新手入门</h2>
+                <p>以下指南将帮助您开始使用MCP服务，无论您是初学者还是有经验的开发者：</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">5分钟快速入门</h3>
+                            <p>在5分钟内开始使用您的第一个MCP服务。</p>
+                            <a href="guide/quick-start.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">如何选择合适的服务</h3>
+                            <p>根据您的需求选择最合适的MCP服务。</p>
+                            <a href="guide/choosing-service.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">认证与安全</h3>
+                            <p>了解如何安全地配置和使用MCP服务的认证。</p>
+                            <a href="guide/auth-security.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="use-cases" style="margin-top: 60px;">
+                <h2 class="section-title">常见使用场景</h2>
+                <p>了解MCP服务如何在各种实际场景中发挥作用：</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">内容创作与编辑</h3>
+                            <p>使用MCP服务生成、编辑和优化各种类型的内容。</p>
+                            <a href="guide/content-creation.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">代码辅助与开发</h3>
+                            <p>利用MCP服务加速软件开发，自动化代码生成和调试。</p>
+                            <a href="guide/code-assistance.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">数据分析与可视化</h3>
+                            <p>通过MCP服务分析数据并生成洞察。</p>
+                            <a href="guide/data-analysis.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="advanced-topics" style="margin-top: 60px;">
+                <h2 class="section-title">高级主题</h2>
+                <p>掌握更高级的MCP使用技巧和策略：</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">提示工程最佳实践</h3>
+                            <p>学习如何设计有效的提示以获得最佳结果。</p>
+                            <a href="guide/prompt-engineering.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">MCP工具链开发</h3>
+                            <p>了解如何开发和利用MCP工具链扩展功能。</p>
+                            <a href="guide/tool-chains.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            图片占位符
+                        </div>
+                        <div class="guide-content">
+                            <h3 class="guide-title">性能优化</h3>
+                            <p>学习优化MCP服务使用的技巧，降低成本并提高效率。</p>
+                            <a href="guide/performance-optimization.html" class="btn">阅读指南</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="faq" style="margin-top: 60px;">
+                <h2 class="section-title">常见问题解答</h2>
+                <p>查找常见问题的答案和解决方案：</p>
+                
+                <div class="card" style="margin-top: 20px;">
+                    <h3>MCP服务需要编程知识吗？</h3>
+                    <p>不一定。许多MCP服务提供用户友好的界面，不需要编程知识。我们的目录中明确标注了每个服务的复杂度，帮助您选择适合自己技术水平的服务。</p>
+                </div>
+                
+                <div class="card" style="margin-top: 20px;">
+                    <h3>MCP服务是免费的吗？</h3>
+                    <p>有些MCP服务提供免费层级，而其他服务则需要付费。我们的目录中包含每个服务的价格信息，以帮助您了解潜在成本。</p>
+                </div>
+                
+                <div class="card" style="margin-top: 20px;">
+                    <h3>我的数据在使用MCP服务时安全吗？</h3>
+                    <p>这取决于具体的服务提供商。我们的服务详情页面包含了关于每个服务数据安全政策的信息。一般来说，reputable服务提供商会有明确的隐私政策和数据处理协议。</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="guide/faq.html" class="btn">查看更多常见问题</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="directory.html">服务目录</a></li>
+                        <li><a href="guide.html">用户指南</a></li>
+                        <li><a href="developers.html">开发者中心</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="guide/faq.html">常见问题</a></li>
+                        <li><a href="guide/glossary.html">术语表</a></li>
+                        <li><a href="blog.html">博客</a></li>
+                        <li><a href="guide/tutorials.html">教程</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>社区</h3>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/remotemcp.org" target="_blank">GitHub</a></li>
+                        <li><a href="contribute.html">贡献指南</a></li>
+                        <li><a href="submit.html">提交服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="terms.html">使用条款</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 RemoteMCP.org. 基于MIT许可证开源。
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

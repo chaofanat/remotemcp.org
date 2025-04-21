@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemoteMCP.org - 最全面的远程MCP服务目录</title>
+    <meta name="description" content="RemoteMCP.org帮助普通用户无需配置任何环境即可轻松使用MCP（Model Context Protocol）服务">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">RemoteMCP.org</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="directory.html">浏览服务</a></li>
+                    <li><a href="guide.html">用户指南</a></li>
+                    <li><a href="developers.html">开发者中心</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页横幅 -->
+    <section class="hero">
+        <div class="container">
+            <h1>发现和使用最佳MCP服务</h1>
+            <p>RemoteMCP.org提供最全面的远程MCP服务目录，帮助普通用户无需配置环境即可轻松使用AI助手</p>
+            <a href="directory.html" class="btn">浏览所有服务</a>
+        </div>
+    </section>
+
+    <!-- 服务分类导航 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">按分类浏览</h2>
+            <div class="services-grid">
+                <div class="card">
+                    <h3 class="card-title">文本处理</h3>
+                    <p>提供文本分析、摘要、翻译和创作的服务</p>
+                    <a href="directory.html?category=text" class="btn">查看服务</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">图像分析</h3>
+                    <p>提供图像识别、分类和处理的服务</p>
+                    <a href="directory.html?category=image" class="btn">查看服务</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">代码辅助</h3>
+                    <p>提供代码生成、优化和调试的服务</p>
+                    <a href="directory.html?category=code" class="btn">查看服务</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">数据处理</h3>
+                    <p>提供数据分析、可视化和处理的服务</p>
+                    <a href="directory.html?category=data" class="btn">查看服务</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门服务 -->
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">热门MCP服务</h2>
+            <div class="services-grid">
+                <div class="card service-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Claude分析服务</h3>
+                        <p>强大的文本分析和理解服务，支持长文档处理</p>
+                        <div class="tags">
+                            <span class="tag">文本</span>
+                            <span class="tag">分析</span>
+                            <span class="tag">简单配置</span>
+                        </div>
+                    </div>
+                    <a href="service/claude-analysis.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                <div class="card service-card">
+                    <div class="card-body">
+                        <h3 class="card-title">GPT代码助手</h3>
+                        <p>提供代码生成、优化和解释的智能服务</p>
+                        <div class="tags">
+                            <span class="tag">代码</span>
+                            <span class="tag">助手</span>
+                            <span class="tag">中等配置</span>
+                        </div>
+                    </div>
+                    <a href="service/gpt-code.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+                <div class="card service-card">
+                    <div class="card-body">
+                        <h3 class="card-title">图像识别API</h3>
+                        <p>快速准确的图像识别和分类服务</p>
+                        <div class="tags">
+                            <span class="tag">图像</span>
+                            <span class="tag">识别</span>
+                            <span class="tag">简单配置</span>
+                        </div>
+                    </div>
+                    <a href="service/image-recognition.html" class="btn" style="margin-top: 15px;">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新手指南 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">新手指南</h2>
+            <div class="services-grid">
+                <div class="card">
+                    <h3 class="card-title">什么是MCP?</h3>
+                    <p>了解Model Context Protocol的基础概念和工作原理</p>
+                    <a href="guide/what-is-mcp.html" class="btn">阅读指南</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">如何选择合适的服务</h3>
+                    <p>根据您的需求选择最合适的MCP服务</p>
+                    <a href="guide/choosing-service.html" class="btn">阅读指南</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">快速入门教程</h3>
+                    <p>5分钟内开始使用您的第一个MCP服务</p>
+                    <a href="guide/quick-start.html" class="btn">阅读指南</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="directory.html">服务目录</a></li>
+                        <li><a href="guide.html">用户指南</a></li>
+                        <li><a href="developers.html">开发者中心</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="guide/faq.html">常见问题</a></li>
+                        <li><a href="guide/glossary.html">术语表</a></li>
+                        <li><a href="blog.html">博客</a></li>
+                        <li><a href="guide/tutorials.html">教程</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>社区</h3>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/remotemcp.org" target="_blank">GitHub</a></li>
+                        <li><a href="contribute.html">贡献指南</a></li>
+                        <li><a href="submit.html">提交服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="terms.html">使用条款</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 RemoteMCP.org. 基于MIT许可证开源。
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
