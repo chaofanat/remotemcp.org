@@ -40,7 +40,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link to="/guide/choosing-service" :class="{ active: isActive('/guide/choosing-service') }">
+                <router-link to="/guide/choose-comfortable-service" :class="{ active: isActive('/guide/choosing-service') }">
                   选择适合的服务
                 </router-link>
               </li>
@@ -54,7 +54,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link to="/guide/use-cases" :class="{ active: isActive('/guide/use-cases') }">
+                <router-link to="/guide/common-scenarios" :class="{ active: isActive('/guide/common-scenarios') }">
                   常见使用场景
                 </router-link>
               </li>
@@ -73,8 +73,13 @@
                 </router-link>
               </li>
               <li>
-                <router-link to="/guide/tutorials" :class="{ active: isActive('/guide/tutorials') }">
-                  教程
+                <router-link to="/guide/related-tutorials" :class="{ active: isActive('/guide/related-tutorials') }">
+                  相关教程
+                </router-link>
+              </li>
+              <li>
+                <router-link to="/guide/learning-resources" :class="{ active: isActive('/guide/learning-resources') }">
+                  学习资源
                 </router-link>
               </li>
             </ul>

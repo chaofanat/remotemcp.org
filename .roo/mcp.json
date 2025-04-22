@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "remotemcp.org Docs": {
+      "url": "https://gitmcp.io/chaofanat/remotemcp.org"
+    },
+    "vue-mcp": {
+      "url": "http://localhost:3000/__mcp/sse"
+    }
+  }
+}

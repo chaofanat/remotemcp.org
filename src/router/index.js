@@ -13,8 +13,14 @@ const WhatIsMcp = () => import('../views/guide/WhatIsMcp.vue')
 const McpVsApi = () => import('../views/guide/McpVsApi.vue')
 const McpConcepts = () => import('../views/guide/McpConcepts.vue')
 const QuickStart = () => import('../views/guide/QuickStart.vue')
+const ChooseComfortableService = () => import('../views/guide/ChooseComfortableService.vue')
 const EffectivePrompts = () => import('../views/guide/EffectivePrompts.vue')
+const CommonScenarios = () => import('../views/guide/CommonScenarios.vue')
 const FaqPage = () => import('../views/guide/FaqPage.vue')
+const Glossary = () => import('../views/guide/Glossary.vue')
+const RelatedTutorials = () => import('../views/guide/RelatedTutorials.vue')
+const LearningResources = () => import('../views/guide/LearningResources.vue')
+const Community = () => import('../views/guide/Community.vue')
 
 // 创建路由实例
 const router = createRouter({
@@ -77,6 +83,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/guide/choose-comfortable-service',
+      name: 'choose-comfortable-service',
+      component: ChooseComfortableService,
+      meta: {
+        title: '选择合适的服务 - 用户指南 - RemoteMCP.org'
+      }
+    },
+    {
       path: '/guide/effective-prompts',
       name: 'effective-prompts',
       component: EffectivePrompts,
@@ -85,11 +99,52 @@ const router = createRouter({
       }
     },
     {
+      path: '/guide/common-scenarios',
+      name: 'common-scenarios',
+      component: CommonScenarios,
+      meta: {
+        title: 'MCP常见使用场景 - 用户指南 - RemoteMCP.org'
+      }
+    },
+    
+    {
       path: '/guide/faq',
       name: 'faq',
       component: FaqPage,
       meta: {
         title: '常见问题 - 用户指南 - RemoteMCP.org'
+      } 
+    },
+    {
+      path: '/guide/glossary',
+      name: 'glossary',
+      component: Glossary,
+      meta: {
+        title: 'MCP术语表 - 用户指南 - RemoteMCP.org'
+      }
+    },
+    {
+      path: '/guide/related-tutorials',
+      name: 'related-tutorials',
+      component: RelatedTutorials,
+      meta: {
+        title: '相关教程 - 用户指南 - RemoteMCP.org'
+      }
+    },
+    {
+      path: '/guide/learning-resources',
+      name: 'learning-resources',
+      component: LearningResources,
+      meta: {
+        title: '学习资源 - 用户指南 - RemoteMCP.org'
+      }
+    },
+    {
+      path: '/guide/community',
+      name: 'community',
+      component: Community,
+      meta: {
+        title: 'MCP社区指南 - 用户指南 - RemoteMCP.org'
       }
     },
     {

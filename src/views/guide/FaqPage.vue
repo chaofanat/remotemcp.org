@@ -1,34 +1,43 @@
 <template>
   <div class="faq-page">
     <!-- 英雄区域 -->
-    <div class="hero-section">
+    <section class="hero">
       <div class="container">
         <h1>常见问题解答</h1>
         <p>关于MCP的常见问题和解答集合</p>
       </div>
-    </div>
-
-    <!-- 面包屑导航 -->
-    <div class="breadcrumb container">
-      <router-link to="/">首页</router-link> &gt;
-      <router-link to="/guide">用户指南</router-link> &gt;
-      <span>常见问题</span>
-    </div>
-
-    <!-- 内容部分 -->
-    <div class="content-section container">
-      <div class="faq-container">
-        <div class="faq-item" v-for="(item, index) in faqItems" :key="index">
-          <div class="faq-question" @click="toggleFaq(index)">
-            <h3>{{ item.question }}</h3>
-            <span class="toggle-icon">{{ item.isOpen ? '−' : '+' }}</span>
+    </section>
+    
+    <section class="section">
+      <div class="container">
+        <div class="breadcrumbs">
+          <router-link to="/">首页</router-link> &gt;
+          <router-link to="/guide">用户指南</router-link> &gt;
+          <span>常见问题</span>
+        </div>
+        
+        <div class="guide-content">
+          <p>以下是关于MCP的常见问题解答，帮助您快速了解MCP并解决可能遇到的问题。如果您没有找到需要的答案，请查看我们的<router-link to="/documentation">详细文档</router-link>或<router-link to="/contact">联系我们</router-link>。</p>
+          
+          <div class="faq-container">
+            <div class="faq-item" v-for="(item, index) in faqItems" :key="index">
+              <div class="faq-question" @click="toggleFaq(index)">
+                <h3>{{ item.question }}</h3>
+                <span class="toggle-icon">{{ item.isOpen ? '−' : '+' }}</span>
+              </div>
+              <div class="faq-answer" v-show="item.isOpen">
+                <p v-html="item.answer"></p>
+              </div>
+            </div>
           </div>
-          <div class="faq-answer" v-show="item.isOpen">
-            <p v-html="item.answer"></p>
+          
+          <div class="guide-navigation">
+            <router-link to="/guide/common-scenarios" class="btn">&larr; 常见使用场景</router-link>
+            <router-link to="/guide/glossary" class="btn">MCP术语表 &rarr;</router-link>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -94,61 +103,36 @@ function toggleFaq(index) {
 </script>
 
 <style scoped>
-.faq-page {
-  padding-bottom: 60px;
-}
-
-.hero-section {
-  background-color: #f5f7fa;
-  padding: 60px 0;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.hero-section h1 {
-  margin-bottom: 16px;
-  font-size: 36px;
-  color: #2c3e50;
-}
-
-.hero-section p {
-  font-size: 18px;
-  color: #606f7b;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.breadcrumb {
-  margin-bottom: 40px;
-  color: #606f7b;
-  font-size: 14px;
-}
-
-.breadcrumb a {
-  color: #3498db;
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.faq-container {
+/* 采用与WhatIsMcp.vue相同的样式 */
+.guide-content {
   max-width: 800px;
   margin: 0 auto;
 }
 
+.guide-content p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.guide-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--light-gray);
+}
+
+/* FAQ特定样式 */
+.faq-container {
+  margin: 30px 0;
+}
+
 .faq-item {
   margin-bottom: 16px;
-  border: 1px solid #e6e6e6;
-  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
@@ -156,29 +140,46 @@ function toggleFaq(index) {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  background-color: #f9f9f9;
+  background-color: var(--light-gray);
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.faq-question:hover {
+  background-color: var(--hover-color, #edf2f7);
 }
 
 .faq-question h3 {
   margin: 0;
   font-size: 18px;
-  color: #2c3e50;
+  color: var(--primary-color);
+  font-weight: 500;
 }
 
 .toggle-icon {
   font-size: 24px;
-  color: #3498db;
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
 .faq-answer {
   padding: 20px;
-  background-color: #fff;
+  background-color: white;
   line-height: 1.6;
+  border-top: 1px solid var(--border-color);
 }
 
 .faq-answer p {
   margin: 0;
-  color: #4a5568;
+  color: var(--text-color);
+}
+
+.faq-answer a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.faq-answer a:hover {
+  text-decoration: underline;
 }
 </style> 
