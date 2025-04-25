@@ -1,0 +1,6 @@
+# robots.txt for RemoteMCP.org
+User-agent: *
+Allow: /
+
+# 允许所有内容抓取
+Disallow: 
