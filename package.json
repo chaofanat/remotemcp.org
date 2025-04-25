@@ -14,7 +14,6 @@
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
     "marked": "^15.0.8",
-    "vite-plugin-md": "^0.22.5",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
