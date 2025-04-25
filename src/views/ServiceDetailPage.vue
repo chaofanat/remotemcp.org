@@ -144,11 +144,8 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
-import matter from 'gray-matter';
-
-// Buffer polyfill
-import { Buffer } from 'buffer';
-globalThis.Buffer = Buffer;
+// 导入预生成的JSON数据
+import serviceData from '../data/serviceData.json';
 
 const route = useRoute();
 const serviceId = route.params.id;
@@ -158,6 +155,13 @@ const error = ref(null);
 // 从Markdown渲染HTML内容
 const renderedContent = computed(() => {
   if (!service.value || !service.value.content) return '';
+  
+  // 如果内容已经是HTML，直接返回
+  if (service.value.content.startsWith('<')) {
+    return service.value.content;
+  }
+  
+  // 否则尝试渲染Markdown
   try {
     return marked(service.value.content);
   } catch (e) {
@@ -180,45 +184,24 @@ function getFeatureName(key) {
 // 加载服务详情
 async function loadServiceDetail() {
   try {
-    // 尝试导入服务的Markdown文件
-    const serviceFiles = import.meta.glob('/data/services/*.md', { query: '?raw', import: 'default', eager: true });
-    const targetPath = Object.keys(serviceFiles).find(path => {
-      const filename = path.split('/').pop().replace('.md', '');
-      return filename === serviceId;
-    });
-
-    if (!targetPath) {
+    // 使用预生成的JSON服务数据
+    console.log('从JSON数据中查找服务ID:', serviceId);
+    
+    // 查找匹配的服务
+    const foundService = serviceData.find(s => s.id === serviceId);
+    
+    if (!foundService) {
       throw new Error(`找不到ID为 "${serviceId}" 的服务`);
     }
-
-    const rawMarkdown = serviceFiles[targetPath];
-    console.log('Raw markdown content:', rawMarkdown);
     
-    // 解析Markdown前置元数据
-    const { data, content } = matter(rawMarkdown);
-    console.log('Parsed data:', data);
+    console.log('找到服务:', foundService.name);
     
-    // 创建服务对象
+    // 创建服务对象，复制所有属性
     service.value = {
-      id: data.id || serviceId,
-      name: data.name || '未命名服务',
-      category: data.category || 'general',
-      complexity: data.complexity || 'intermediate',
-      description: data.description || '暂无描述',
-      provider: data.author || data.provider || '未知提供者',
-      lastUpdated: data.updatedAt || data.createdAt || '未知日期',
-      version: data.version,
-      homepage: data.homepage,
-      repository: data.repository,
-      license: data.license,
-      tags: data.tags || [],
-      technicalRequirement: data.technicalRequirement,
-      setupEffort: data.setupEffort,
-      supportedFeatures: data.supportedFeatures || {},
-      authentication: data.authentication || {},
-      compatibility: data.compatibility || {},
-      content: content,
-      rawData: data
+      ...foundService,
+      // 保留原始的Markdown内容，由计算属性处理渲染
+      content: foundService.content,
+      rawData: foundService
     };
     
     // 更新页面标题

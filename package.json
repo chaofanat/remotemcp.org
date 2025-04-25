@@ -5,13 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/build-services.cjs",
     "build": "vite build",
     "preview": "vite preview",
     "serve": "vite"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
     "marked": "^15.0.8",
+    "vite-plugin-md": "^0.22.5",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
@@ -19,6 +22,7 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@vitejs/plugin-vue": "^4.5.0",
     "buffer": "^6.0.3",
+    "glob": "^11.0.2",
     "vite": "^5.0.0",
     "vite-plugin-vue-mcp": "^0.3.2"
   }

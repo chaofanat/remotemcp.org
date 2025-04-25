@@ -100,110 +100,41 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import matter from 'gray-matter';
+import MarkdownIt from 'markdown-it';
+// 导入预生成的JSON数据
+import serviceData from '../data/serviceData.json';
 
-// 为gray-matter提供Buffer polyfill
-import { Buffer } from 'buffer';
-globalThis.Buffer = Buffer;
-
-
+// 初始化markdown解析器
+const md = new MarkdownIt();
 
 // 真实数据加载，从data/services目录中加载并解析markdown文档
 const services = ref([]);
 
-onMounted(() => {
-  // 加载Markdown文件
-  const serviceFiles = import.meta.glob('/data/services/*.md', { query: '?raw', import: 'default', eager: true });
-  console.log('Service files found:', serviceFiles);
-  Object.keys(serviceFiles).forEach((path) => {
-    console.log('Loading file:', path);
-    const rawMarkdown = serviceFiles[path];
-    console.log('Raw markdown content:', rawMarkdown);
-    const service = parseMarkdown(rawMarkdown, path);
-    console.log('Parsed service:', service);
-    services.value.push(service);
-  });
-  
-  // 初始化过滤
-  console.log('页面已加载，处理所有服务');
-  console.log('可用分类:', uniqueCategories.value);
-  console.log('可用复杂度:', uniqueComplexities.value);
-
-  
-  // 应用过滤
-  setTimeout(() => {
-    filterServices();
-    console.log('过滤后的服务列表:', filteredServices.value);
-  }, 100); // 短暂延迟确保数据已加载
-});
-
-// 解析markdown文档
-function parseMarkdown(markdown, filePath) {
+onMounted(async () => {
   try {
-    // 使用gray-matter解析前置元数据
-    console.log('Parsing markdown:', typeof markdown);
+    // 使用预生成的服务数据
+    console.log('使用预生成的JSON服务数据，数量:', serviceData.length);
     
-    // 确保markdown是字符串
-    if (typeof markdown !== 'string') {
-      console.error('Markdown is not a string:', markdown);
-      throw new Error('Markdown must be a string');
-    }
-    
-    // 解析前置元数据
-    const result = matter(markdown);
-    console.log('Gray-matter result:', result);
-    const { data, content } = result;
-    console.log('Data from markdown:', data);
-    
-    // 提取文件名作为备用ID
-    const fileName = filePath.split('/').pop().replace('.md', '');
-    console.log('Extracted filename:', fileName);
-    
-    // 将YAML元数据转换为服务对象
-    const service = {
-      id: data.id || fileName,
-      name: data.name || '未命名服务',
-      category: data.category || 'general',
-      complexity: data.complexity || 'intermediate',
-      description: data.description || '暂无描述',
-      provider: data.author || data.provider || '未知提供者',
-      lastUpdated: data.updatedAt || data.createdAt || '未知日期',
+    // 处理每个服务数据，将Markdown转换为HTML
+    services.value = serviceData.map(service => {
+      // 解析markdown内容
+      const htmlContent = md.render(service.content || '');
       
-      // 存储额外的元数据，可能在详情页中使用
-      version: data.version,
-      homepage: data.homepage,
-      repository: data.repository,
-      license: data.license,
-      tags: data.tags || [],
-      technicalRequirement: data.technicalRequirement,
-      setupEffort: data.setupEffort,
-      supportedFeatures: data.supportedFeatures || {},
-      authentication: data.authentication || {},
-      compatibility: data.compatibility || {},
-      
-      // 存储原始内容，用于详情页显示
-      content: content,
-      
-      // 存储完整的原始数据，以防需要
-      rawData: data,
-    };
+      // 返回带有HTML内容的服务对象
+      return {
+        ...service,
+        content: htmlContent
+      };
+    });
     
-    console.log('Created service object:', service);
-    return service;
+    console.log('加载完成，找到服务数量:', services.value.length);
+    
+    // 应用过滤
+    filterServices();
   } catch (error) {
-    console.error(`解析服务文档错误 (${filePath}):`, error);
-    return {
-      id: filePath.split('/').pop().replace('.md', ''),
-      name: '解析失败的服务',
-      category: 'unknown',
-      complexity: 'unknown',
-      description: `无法解析此服务文档。错误: ${error.message}`,
-      provider: '未知',
-      lastUpdated: '未知日期',
-      error: true
-    };
+    console.error('加载服务数据时发生错误:', error);
   }
-}
+});
 
 // 分页参数
 const itemsPerPage = 3;
