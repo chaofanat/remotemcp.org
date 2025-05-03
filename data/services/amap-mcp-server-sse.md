@@ -4,12 +4,12 @@ name: Amap MCP Server SSE
 description: Amap MCP Server SSE 提供基于SSE协议的地图服务，涵盖12个核心接口，支持地理编码、路线规划等功能，简化开发者接入流程。
 version: 1.0.0
 homepage: https://www.amap.com/
-repository: https://github.com/amap/amap-mcp-server-sse
+repository: https://www.modelscope.cn/mcp/servers/@amap/amap-maps
 author: Amap Open Platform
 license: Apache-2.0
 
 category: ai
-tags: map, geocoding, route-planning, sse, location
+tags: [map, geocoding, route-planning, sse, location]
 
 complexity: intermediate
 technicalRequirement: 熟悉HTTP协议和SSE技术，具备基本的编程能力。

@@ -1,100 +1,26 @@
 [
   {
-    "id": "test-mcp-service",
-    "name": "测试MCP服务",
-    "description": "这是一个用于测试的MCP服务，测试Markdown文件的加载和解析功能。",
+    "id": "amap-mcp-server-sse",
+    "name": "Amap MCP Server SSE",
+    "description": "Amap MCP Server SSE 提供基于SSE协议的地图服务，涵盖12个核心接口，支持地理编码、路线规划等功能，简化开发者接入流程。",
     "version": "1.0.0",
-    "homepage": "https://remotemcp.org",
-    "repository": "https://github.com/user/test-repo",
-    "author": "测试团队",
-    "provider": "测试团队",
-    "license": "MIT",
-    "category": "general",
+    "homepage": "https://www.amap.com/",
+    "repository": "https://www.modelscope.cn/mcp/servers/@amap/amap-maps",
+    "author": "Amap Open Platform",
+    "provider": "Amap Open Platform",
+    "license": "Apache-2.0",
+    "category": "ai",
     "tags": [
-      "测试",
-      "示例"
-    ],
-    "complexity": "beginner",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z",
-    "lastUpdated": "2024-04-10T00:00:00.000Z",
-    "content": "# 测试MCP服务\r\n\r\n这是一个简单的测试服务，用于验证Markdown文件的加载和解析功能是否正常工作。\r\n\r\n## 主要功能\r\n\r\n1. 测试Markdown加载\r\n2. 测试YAML前置元数据解析\r\n3. 测试服务列表显示\r\n\r\n## 如何使用\r\n\r\n这只是一个测试服务，无需实际使用。"
-  },
-  {
-    "id": "github-mcp-server",
-    "name": "GitHub MCP 服务器",
-    "description": "官方GitHub MCP参考实现，允许AI助手通过MCP协议与GitHub交互，支持代码库检索、PR管理和问题跟踪等功能。",
-    "version": "1.0.0",
-    "homepage": "https://modelcontextprotocol.io/examples",
-    "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
-    "author": "Model Context Protocol团队",
-    "provider": "Model Context Protocol团队",
-    "license": "MIT",
-    "category": "programming",
-    "tags": [
-      "代码托管",
-      "版本控制",
-      "项目管理",
-      "远程服务",
-      "官方参考实现"
+      "map",
+      "geocoding",
+      "route-planning",
+      "sse",
+      "location"
     ],
     "complexity": "intermediate",
-    "createdAt": "2023-12-01T00:00:00.000Z",
-    "updatedAt": "2024-04-01T00:00:00.000Z",
-    "lastUpdated": "2024-04-01T00:00:00.000Z",
-    "supportedFeatures": {
-      "resources": true,
-      "prompts": false,
-      "tools": true,
-      "sampling": false
-    },
-    "authentication": {
-      "required": true,
-      "method": "GitHub Token",
-      "authDocUrl": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
-    },
-    "compatibility": {
-      "platforms": [
-        "Windows",
-        "macOS",
-        "Linux"
-      ],
-      "languages": [
-        "JavaScript",
-        "TypeScript"
-      ],
-      "clients": [
-        "Claude Desktop",
-        "Cursor",
-        "VS Code"
-      ]
-    },
-    "technicalRequirement": "基本GitHub知识",
-    "setupEffort": "少量配置",
-    "content": "# GitHub MCP 服务器\r\n\r\nGitHub MCP 服务器是官方MCP参考实现之一，它连接AI助手与GitHub，让AI能够浏览代码库、搜索代码、管理问题和拉取请求等。这使AI能够帮助开发者更高效地管理GitHub项目，而无需开发者共享GitHub凭证。\r\n\r\n## 使用场景\r\n\r\n这个MCP服务适用于以下场景：\r\n\r\n1. **代码库探索**：浏览仓库结构、查找文件和理解代码库架构\r\n2. **问题跟踪**：查询、分类和分析项目问题\r\n3. **代码审查**：分析拉取请求中的代码并提供审查建议\r\n4. **文档查找**：检索README、API文档和项目指南\r\n5. **自动化工作流**：辅助GitHub Actions工作流和CI/CD流程\r\n\r\n## 快速入门\r\n\r\n### 安装与认证配置\r\n\r\nGitHub MCP服务需要GitHub令牌才能访问：\r\n\r\n1. 在GitHub创建个人访问令牌 [GitHub PAT](https://github.com/settings/tokens)\r\n   - 需要的权限：`repo`, `read:org`（如需访问组织仓库）\r\n   - 对于私有仓库，还需添加适当的私有仓库权限\r\n\r\n2. 使用npm安装并配置服务：\r\n\r\n```bash\r\nnpx -y @modelcontextprotocol/server-github\r\n```\r\n\r\n3. 配置Claude Desktop或其他MCP客户端：\r\n\r\n```json\r\n{\r\n  \"mcpServers\": {\r\n    \"github\": {\r\n      \"command\": \"npx\",\r\n      \"args\": [\r\n        \"-y\", \r\n        \"@modelcontextprotocol/server-github\",\r\n        \"--token\",\r\n        \"YOUR_GITHUB_TOKEN\"\r\n      ]\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n### 基本使用示例\r\n\r\n一旦配置完成，您可以通过以下方式使用：\r\n\r\n1. **浏览仓库文件**：\r\n   \"请查看modelcontextprotocol/servers仓库的结构并概述其主要组件\"\r\n\r\n2. **搜索代码**：\r\n   \"在modelcontextprotocol组织的仓库中搜索处理鉴权的代码示例\"\r\n\r\n3. **查看问题**：\r\n   \"列出modelcontextprotocol/servers仓库中最近10个开放的问题\"\r\n\r\n4. **分析拉取请求**：\r\n   \"帮我审查modelcontextprotocol/servers仓库中最近的拉取请求\"\r\n\r\n## 功能详情\r\n\r\nGitHub MCP服务提供以下核心功能：\r\n\r\n### 仓库操作\r\n- **仓库浏览**：获取仓库列表、文件结构和分支信息\r\n- **代码获取**：检索和分析代码文件内容\r\n- **目录导航**：浏览仓库目录结构和文件\r\n- **提交历史**：查看代码提交历史和变更\r\n\r\n### 问题管理\r\n- **问题查询**：搜索和过滤项目问题\r\n- **问题分析**：分析问题趋势和模式\r\n- **标签管理**：查看和理解问题标签系统\r\n\r\n### 拉取请求\r\n- **PR浏览**：查看和分析拉取请求\r\n- **代码差异**：查看代码变更和差异\r\n- **审查评论**：查看PR审查评论和讨论\r\n\r\n### 组织功能\r\n- **团队结构**：浏览组织团队和成员\r\n- **仓库权限**：查看仓库权限和访问级别\r\n\r\n## 认证与安全\r\n\r\n### 令牌管理\r\nGitHub令牌是敏感信息，应妥善保管：\r\n- 使用最小所需权限原则\r\n- 考虑设置令牌过期时间\r\n- 不要在公共代码库中分享令牌\r\n\r\n### API使用限制\r\nGitHub API有使用限制，通常为每小时5,000个请求（认证用户）。超出限制可能导致暂时无法使用服务。\r\n\r\n## 社区资源\r\n\r\n- [官方MCP服务库](https://github.com/modelcontextprotocol/servers)\r\n- [GitHub API官方文档](https://docs.github.com/en/rest)\r\n- [MCP社区讨论](https://github.com/orgs/modelcontextprotocol/discussions)\r\n\r\n---\r\n\r\n**注意**：使用GitHub MCP服务时，请注意遵守GitHub的服务条款和API使用限制。"
-  },
-  {
-    "id": "brave-search-mcp-server",
-    "name": "Brave Search MCP 服务器",
-    "description": "官方Brave Search MCP参考实现，允许AI助手通过MCP协议访问Brave搜索引擎进行实时网络搜索和内容检索，支持多语言搜索和结果摘要。",
-    "version": "1.0.0",
-    "homepage": "https://modelcontextprotocol.io/examples",
-    "repository": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
-    "author": "Model Context Protocol团队",
-    "provider": "Model Context Protocol团队",
-    "license": "MIT",
-    "category": "搜索",
-    "tags": [
-      "搜索引擎",
-      "网络浏览",
-      "实时信息",
-      "远程服务",
-      "官方参考实现"
-    ],
-    "complexity": "简单",
-    "createdAt": "2023-12-01T00:00:00.000Z",
-    "updatedAt": "2024-04-01T00:00:00.000Z",
-    "lastUpdated": "2024-04-01T00:00:00.000Z",
+    "createdAt": "2023-10-01T00:00:00.000Z",
+    "updatedAt": "2023-10-10T00:00:00.000Z",
+    "lastUpdated": "2023-10-10T00:00:00.000Z",
     "supportedFeatures": {
       "resources": true,
       "prompts": false,
@@ -104,7 +30,7 @@
     "authentication": {
       "required": true,
       "method": "API Key",
-      "authDocUrl": "https://brave.com/search/api/"
+      "authDocUrl": "https://www.amap.com/api/auth"
     },
     "compatibility": {
       "platforms": [
@@ -114,7 +40,8 @@
       ],
       "languages": [
         "JavaScript",
-        "TypeScript"
+        "Python",
+        "Java"
       ],
       "clients": [
         "Claude Desktop",
@@ -122,8 +49,8 @@
         "VS Code"
       ]
     },
-    "technicalRequirement": "无需技术背景",
+    "technicalRequirement": "熟悉HTTP协议和SSE技术，具备基本的编程能力。",
     "setupEffort": "少量配置",
-    "content": "# Brave Search MCP 服务器\r\n\r\nBrave Search MCP 服务器是官方MCP参考实现之一，它连接AI助手与Brave搜索引擎，让AI能够实时获取网络信息，提供基于最新事实的回答和见解。\r\n\r\n## 使用场景\r\n\r\n这个MCP服务适用于需要实时信息的场景：\r\n\r\n1. **回答时事问题**：获取最新新闻、事件和信息\r\n2. **事实核查**：验证特定信息的准确性\r\n3. **研究辅助**：收集特定主题的最新研究和数据\r\n4. **技术支持**：查找产品文档、问题解决方案和开源代码示例\r\n5. **市场分析**：获取公司、产品和行业的最新动态\r\n\r\n## 快速入门\r\n\r\n### 安装与认证配置\r\n\r\nBrave Search MCP服务需要API密钥才能访问：\r\n\r\n1. 访问 [Brave Search API](https://brave.com/search/api/) 注册并创建API密钥\r\n2. 使用npm安装并配置服务：\r\n\r\n```bash\r\nnpx -y @modelcontextprotocol/server-brave-search\r\n```\r\n\r\n3. 配置Claude Desktop或其他MCP客户端：\r\n\r\n```json\r\n{\r\n  \"mcpServers\": {\r\n    \"brave-search\": {\r\n      \"command\": \"npx\",\r\n      \"args\": [\r\n        \"-y\",\r\n        \"@modelcontextprotocol/server-brave-search\",\r\n        \"--api-key\",\r\n        \"YOUR_BRAVE_API_KEY\"\r\n      ]\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n### 基本使用示例\r\n\r\n一旦配置完成，您可以通过以下方式使用：\r\n\r\n1. **基本搜索**：\r\n   \"请搜索关于'可再生能源最新发展'的信息\"\r\n\r\n2. **特定查询**：\r\n   \"帮我查找'如何在Vue.js中实现无限滚动'\"\r\n\r\n3. **综合分析**：\r\n   \"搜索并总结2024年人工智能领域的三大趋势\"\r\n\r\n4. **多语言搜索**：\r\n   \"用德语搜索'柏林最佳咖啡馆'\"\r\n\r\n## 功能详情\r\n\r\nBrave Search MCP服务提供以下核心功能：\r\n\r\n### 搜索功能\r\n- **一般搜索**：执行通用搜索查询\r\n- **新闻搜索**：专注于新闻文章和时事\r\n- **图片搜索**：查找相关图片和视觉内容\r\n- **视频搜索**：查找相关视频内容\r\n\r\n### 搜索控制\r\n- **语言设置**：指定搜索结果的语言\r\n- **地理位置**：基于特定地区的搜索结果\r\n- **日期范围**：限制结果为特定时间段\r\n- **安全搜索**：控制成人内容过滤\r\n\r\n### 结果处理\r\n- **摘要生成**：自动总结搜索结果的关键信息\r\n- **内容提取**：从网页中提取相关信息\r\n- **结果比较**：分析多个来源以验证信息\r\n\r\n## 认证与安全\r\n\r\n### API密钥管理\r\nBrave Search API使用API密钥进行认证。该密钥应妥善保管：\r\n- 不要在公共代码库中分享密钥\r\n- 考虑设置使用限制，避免超额费用\r\n- 定期轮换密钥以提高安全性\r\n\r\n### 使用限制\r\nBrave Search API有使用限制，请参考Brave官方文档了解最新的限制政策。\r\n\r\n## 社区资源\r\n\r\n- [官方MCP服务库](https://github.com/modelcontextprotocol/servers)\r\n- [Brave Search API官方文档](https://brave.com/search/api/)\r\n- [MCP社区讨论](https://github.com/orgs/modelcontextprotocol/discussions)\r\n\r\n---\r\n\r\n**注意**：使用Brave Search MCP服务时，请注意遵守Brave的使用条款和API限制。"
+    "content": "# Amap MCP Server SSE\r\n\r\nAmap MCP Server SSE 是基于SSE协议的地图服务解决方案，旨在提升LBS服务与LLM的交互效率。该服务覆盖12个核心接口，包括地理编码、逆地理编码、IP定位、天气查询、路线规划等，适用于多种场景。通过SSE技术，开发者可以轻松建立与服务器之间的持久连接，实现实时数据推送。\r\n\r\n## 使用场景\r\n\r\n这个MCP服务适用于以下场景：\r\n\r\n1. 地理位置信息查询与转换\r\n2. 实时天气查询\r\n3. 多模式路线规划（步行、骑行、驾车、公共交通）\r\n4. POI信息搜索与详情查询\r\n\r\n## 快速入门\r\n\r\n### 安装与认证配置\r\n\r\n首先，您需要获取Amap Open Platform的API Key。然后，配置您的应用以使用MCP Server SSE服务。\r\n\r\n```bash\r\n# 示例配置\r\n{\r\n  \"mcpServers\": {\r\n    \"amap-maps\": {\r\n      \"type\": \"sse\",\r\n      \"url\": \"https://mcp.api-inference.modelscope.cn/sse/cfe6e2fef64e46\"\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n### 基本使用示例\r\n\r\n以下是一个简单的地理编码请求示例：\r\n\r\n```javascript\r\nconst eventSource = new EventSource('https://mcp.api-inference.modelscope.cn/sse/cfe6e2fef64e46?address=北京市朝阳区&city=北京市');\r\n\r\neventSource.onmessage = function(event) {\r\n  console.log('Received data:', event.data);\r\n};\r\n\r\neventSource.onerror = function(error) {\r\n  console.error('EventSource failed:', error);\r\n};\r\n```\r\n\r\n## 功能详情\r\n\r\n### 地理编码\r\n\r\n将详细的结构化地址转换为经纬度坐标。\r\n\r\n**输入**: address（地址信息），city（城市信息，可选）\r\n\r\n**输出**: location（经纬度）\r\n\r\n### 逆地理编码\r\n\r\n将Amap经纬度坐标转换为行政区划地址信息。\r\n\r\n**输入**: location（经纬度）\r\n\r\n**输出**: addressComponent（位置信息，包括省、市、区等）\r\n\r\n### IP定位\r\n\r\n根据用户提供的IP地址确定位置。\r\n\r\n**输入**: IP\r\n\r\n**输出**: province（省份），city（城市），adcode（城市代码）\r\n\r\n### 天气查询\r\n\r\n根据城市名称或标准adcode查询指定城市的天气。\r\n\r\n**输入**: city（城市名称或城市adcode）\r\n\r\n**输出**: forecasts（天气预报）\r\n\r\n### 路线规划\r\n\r\n支持骑行、步行、驾车和公共交通路线规划，考虑各种道路情况。\r\n\r\n**输入**: origin（起点经纬度），destination（终点经纬度）\r\n\r\n**输出**: distance（规划距离），duration（规划时间），steps（规划步骤信息）\r\n\r\n### POI搜索\r\n\r\n基于关键词搜索相关POI位置信息。\r\n\r\n**输入**: keywords（搜索关键词），city（查询城市，可选）\r\n\r\n**输出**: suggestion（搜索建议），pois（位置信息列表）\r\n\r\n## 认证与安全\r\n\r\n使用Amap MCP Server SSE服务需要API Key认证。请确保您的API Key安全，避免泄露。详细的认证流程请参考[认证文档](https://www.amap.com/api/auth)。\r\n\r\n## 社区资源\r\n\r\n- [Amap开发者论坛](https://developer.amap.com/forum)\r\n- [GitHub代码仓库](https://github.com/amap/amap-mcp-server-sse)\r\n\r\n---\r\n\r\n**注意**：在使用过程中，请确保遵守Amap Open Platform的使用规范和法律法规。"
   }
 ]
