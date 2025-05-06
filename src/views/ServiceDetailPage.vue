@@ -217,9 +217,14 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .service-detail-page {
   margin-bottom: 3rem;
+}
+
+.container {
+  max-width: 90%;
+  width: 90%;
 }
 
 .breadcrumb {
@@ -245,7 +250,7 @@ onMounted(() => {
 
 .service-content {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: minmax(250px, 1fr) minmax(0, 3fr);
   gap: 2rem;
 }
 
@@ -416,12 +421,16 @@ onMounted(() => {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
   padding: 2rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .markdown-content {
   line-height: 1.6;
   color: var(--text-dark);
   font-size: 1rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .markdown-content h1 {
