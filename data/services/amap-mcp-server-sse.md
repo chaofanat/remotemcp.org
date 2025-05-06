@@ -3,10 +3,10 @@ id: amap-mcp-server-sse
 name: Amap MCP Server SSE
 description: Amap MCP Server SSE 提供基于SSE协议的地图服务，涵盖12个核心接口，支持地理编码、路线规划等功能，简化开发者接入流程。
 version: 1.0.0
-homepage: https://www.amap.com/
+homepage: https://developer.amap.com/api/mcp-server/summary
 repository: https://www.modelscope.cn/mcp/servers/@amap/amap-maps
 author: Amap Open Platform
-license: Apache-2.0
+license: None
 
 category: ai
 tags: [map, geocoding, route-planning, sse, location]
@@ -24,15 +24,15 @@ supportedFeatures:
 authentication:
   required: true
   method: API Key
-  authDocUrl: https://www.amap.com/api/auth
+  authDocUrl: https://console.amap.com/dev/key/app
 
 compatibility:
   platforms: [Windows, macOS, Linux]
   languages: [JavaScript, Python, Java]
-  clients: [Claude Desktop, Cursor, VS Code]
+  clients: [Claude Desktop, Cursor, VS Code, Cherry Studio]
 
-createdAt: 2023-10-01
-updatedAt: 2023-10-10
+createdAt: 2025-05-06
+updatedAt: 2025-05-06
 ---
 
 # Amap MCP Server SSE
@@ -49,38 +49,40 @@ Amap MCP Server SSE 是基于SSE协议的地图服务解决方案，旨在提升
 4. POI信息搜索与详情查询
 
 ## 快速入门
+[官方文档](https://developer.amap.com/api/mcp-server/summary)
 
 ### 安装与认证配置
 
 首先，您需要获取Amap Open Platform的API Key。然后，配置您的应用以使用MCP Server SSE服务。
 
 ```bash
-# 示例配置
+
 {
   "mcpServers": {
-    "amap-maps": {
-      "type": "sse",
-      "url": "https://mcp.api-inference.modelscope.cn/sse/cfe6e2fef64e46"
+    "amap-amap-sse": {
+      "url": "https://mcp.amap.com/sse?key=您在高德官网上申请的key"
     }
   }
 }
 ```
 
-### 基本使用示例
+### 一个用例
 
-以下是一个简单的地理编码请求示例：
-
-```javascript
-const eventSource = new EventSource('https://mcp.api-inference.modelscope.cn/sse/cfe6e2fef64e46?address=北京市朝阳区&city=北京市');
-
-eventSource.onmessage = function(event) {
-  console.log('Received data:', event.data);
-};
-
-eventSource.onerror = function(error) {
-  console.error('EventSource failed:', error);
-};
+- mcp客户端： Cherry Studio
+- LLM：deepseek-chat
+- prompt:
+```md
+我计划去杭州余杭区工作，大概明天从江苏张家港出发，到达杭州后，需要在三天内找到合适的房子租住，请帮我考虑注意事项并规划行程，将你的规划以一个设计优美的html页面作为结果给我
 ```
+- results:
+
+![](https://www.chaofan.online/media/objectsstorage/BaiduSyncdisk/objstorage/image_ds5y8rR.png)
+
+![](https://www.chaofan.online/media/objectsstorage/BaiduSyncdisk/objstorage/image_LqPm6ro.png)
+
+## 评价
+该mcp服务存在部分工具说明不够清晰导致llm无法正确生成工具调用参数的情况。
+
 
 ## 功能详情
 
@@ -134,12 +136,12 @@ eventSource.onerror = function(error) {
 
 ## 认证与安全
 
-使用Amap MCP Server SSE服务需要API Key认证。请确保您的API Key安全，避免泄露。详细的认证流程请参考[认证文档](https://www.amap.com/api/auth)。
+使用Amap MCP Server SSE服务需要API Key认证。请确保您的API Key安全，避免泄露。详细的认证流程请参考[认证文档](https://console.amap.com/dev/key/app)。
 
 ## 社区资源
 
-- [Amap开发者论坛](https://developer.amap.com/forum)
-- [GitHub代码仓库](https://github.com/amap/amap-mcp-server-sse)
+- [高德开发者平台](https://developer.amap.com/)
+
 
 ---
 

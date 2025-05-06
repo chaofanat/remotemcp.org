@@ -25,3 +25,5 @@ dist-ssr
 .cursor/*
 .cursorindexingignore
 .cursorrules
+# SpecStory explanation file
+.specstory/.what-is-this.md
